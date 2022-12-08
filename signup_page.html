@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static%}
+{% block main_content %}
+
+<body>
+    <div class="all-wrapper menu-side with-pattern">
+        <div class="auth-box-w wider">
+            <div class="logo-w"><a href="index-2.html"><img alt="" src="{% static 'img/logo-big.png' %}"></a></div>
+            <h4 class="auth-header">Create new account</h4>
+            
+            {% if error %}
+            <h3 style="color: red;">{{ error }}</h3>
+            {% endif %}
+        
+            <form action="{% url 'signup' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group"><label for="">Email address</label><input class="form-control"
+                        placeholder="Enter email" type="email" name="email" required>
+                    <div class="pre-icon os-icon os-icon-email-2-at2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group"><label for="">Password</label><input class="form-control"
+                                placeholder="Password" type="password" name="password" required>
+                            <div class="pre-icon os-icon os-icon-fingerprint"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group"><label for="">Confirm Password</label><input class="form-control"
+                                placeholder="Password" type="password" name="confirm_password" required></div>
+                    </div>
+                </div>
+                <div class="buttons-w">
+                    <button class="btn btn-primary">Now  Singup</button>
+                    <button class="btn btn-dark"><a href="{% url 'signin_page' %}" style="text-decoration: none; color: white;">Login</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

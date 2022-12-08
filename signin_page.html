@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static%}
+{% block main_content %}
+
+<body class="auth-wrapper">
+    <div class="all-wrapper menu-side with-pattern">
+        <div class="auth-box-w">
+            <div class="logo-w"><a href="index-2.html"><img alt="" src="{% static 'img/logo-big.png' %}"></a></div>
+            <h4 class="auth-header">Login Form</h4>
+            {% if error %}
+            <h3 style="color: red;">{{ error }}</h3>
+            {% endif %}
+            
+            <form action="{% url 'signin' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group"><label for="">Email</label><input class="form-control"
+                        placeholder="Enter your email" name="email">
+                    <div class="pre-icon os-icon os-icon-user-male-circle"></div>
+                </div>
+                <div class="form-group"><label for="">Password</label><input class="form-control"
+                        placeholder="Enter your password" type="password" name="password">
+                    <div class="pre-icon os-icon os-icon-fingerprint"></div>
+                </div>
+                <div class="buttons-w">
+                <button type="submit" class="btn btn-primary">Log in</button>
+                <button class="btn btn-light"><a href="{% url 'forgot_pwd_page' %}" style="text-decoration: none;">Forgot Password</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

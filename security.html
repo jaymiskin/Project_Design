@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static%}
+{% block main_content %}
+
+
+<style>
+*, *::before, *::after {
+    background: white;
+}
+
+input.form-control{
+    padding: 2%;
+}
+</style>
+
+    <h4 style="margin-bottom: 3%;">Security Information:-</h4>
+    <form action="{% url 'password_reset' %}" class="was-validated" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="#" class="form-label"><strong>Current Password</strong></label>
+            <input type="password" class="form-control" id="#" placeholder="Enter Current Password" name="current_password" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="#" class="form-label"><strong>New Password</strong></label>
+            <input type="password" class="form-control" id="#" placeholder="Enter New Password" name="new_password" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="#" class="form-label"><strong>Confirm Password</strong></label>
+            <input type="password" class="form-control" id="#" placeholder="Enter Confirm Password" name="confirm_password" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-success btn-lg">Submit</button>
+        <a href="{% url 'logout' %}"  style="text-decoration: none; color: white;"><button type="submit" class="btn btn-dark btn-lg">logout</a></button>
+
+
+    </form>
+
+
+
+{% endblock %}

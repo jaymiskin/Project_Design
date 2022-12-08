@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static%}
+{% block main_content %}
+
+<body class="auth-wrapper">
+    <div class="all-wrapper menu-side with-pattern">
+        <div class="auth-box-w">
+            <div class="logo-w"><a href="index-2.html"><img alt="" src="{% static 'img/logo-big.png' %}"></a></div>
+            <h4 class="auth-header">Forgot Password</h4>
+            <form action="{% url 'forgot_password' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group"><label for="">Email</label><input class="form-control"
+                        placeholder="Enter your Email" type="email" name="email">
+                    <div class="pre-icon os-icon os-icon-user-male-circle"></div>
+                </div>
+                <div class="form-group"><label for="">Password</label><input class="form-control"
+                        placeholder="Enter your password" type="password" name="password">
+                    <div class="pre-icon os-icon os-icon-fingerprint"></div>
+                </div>
+                <div class="form-group"><label for="">Confirm Password</label><input class="form-control"
+                    placeholder="Enter your confirm password" type="password" name="confirm_password">
+                <div class="pre-icon os-icon os-icon-fingerprint"></div>
+                </div>
+                <button class="btn btn-primary">Successfully changed</button>
+                 <button class="btn btn-dark"><a href="{% url 'signin_page' %}" style="text-decoration: none; color: white;">Login</a></button>
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
